@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // =============================== [global]
+      "@__tests__/*": [
+        "__tests__/*"
+      ],
+      // =============================== [src]
+      "@configs/*": [
+        "src/configs/*"
+      ],
+      "@libs/*": [
+        "src/libs/*"
+      ],
+      "@middleware/*": [
+        "src/middleware/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      // =============================== [src / v1]
+      "@v1Controllers/*": [
+        "src/v1/controllers/*"
+      ],
+      "@v1Graphql/*": [
+        "src/v1/graphql/*"
+      ],
+      "@v1GraphqlNonAuthSchema/*": [
+        "src/v1/graphqlNonAuthSchema/*"
+      ],
+      "@v1Routes/*": [
+        "src/v1/routes/*"
+      ],
+      "@v1Utils/*": [
+        "src/v1/utils/*"
+      ],
+    }
+  }
+}
