@@ -6,6 +6,9 @@ const UserSDL = gql`
   #
 
   type User {
+    res_code: String
+    res_desc: String
+
     id: String
     name: String
     age: Int
