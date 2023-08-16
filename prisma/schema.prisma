@@ -15,3 +15,9 @@ model Book {
   title String
   author String
 }
+
+model User {
+  id String @id
+  name String
+  age Int
+}

@@ -7,8 +7,19 @@ const UserSDL = gql`
 
   type User {
     id: String
-    firstname: String
-    surname: String
+    name: String
+    age: Int
+  }
+
+  type UserQuery {
+    res_code: String
+    res_desc: String
+    items: [User]
+  }
+
+  input CreateUser {
+    name: String!
+    age: Int!
   }
 
   #

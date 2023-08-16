@@ -11,7 +11,12 @@ const IndexSDL = gql`
     booksList: BookQuery
 
     #
-    userInfo: User
+    userList: UserQuery
+  }
+
+  type Mutation {
+    #
+    createUser(input: CreateUser): User
   }
 
   #
