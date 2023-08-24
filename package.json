@@ -28,7 +28,8 @@
     "graphql-scalars": "^1.22.2",
     "graphql-tools": "^9.0.0",
     "jsonwebtoken": "^9.0.1",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "nanoid": "^4.0.2"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.0",

@@ -6,14 +6,15 @@
   - User + Login ทำผ่าน API ลอง Design DB และก็ให้ ทดสอบผ่าน API (Postman ได้)
 - Function
   - UserRole
-    - Query UserRoleList
-    - Query UserRoleID
-    - Create User Role
-    - Update Information User Role
-    - Delete User Role
+    - ✔ Query UserRoleList
+    - ✔ Query UserRoleID
+    - ✔ Create User Role
+    - ✔ Update Information User Role
+    - ✔ Delete User Role
   - User
     - Query UserList
-    - Query UserIDCreate User
+    - Query UserID
+    - Create User
     - Update Information User
     - Delete User
   - Login

@@ -15,12 +15,14 @@ import UserRoleSDL from "@v1/graphqlAdminSchema/typedefs/UserRole"
 
 // RESOLVERS ###################################################
 import HelloAdminResolver from "@v1GraphqlAdminSchema/resolvers/HelloAdmin.resolver"
+import UserRoleResolver from "@v1GraphqlAdminSchema/resolvers/UserRole.resolver"
 
 // AUTH ########################################################
 const typedefs = mergeTypeDefs([GlobalSDL, IndexSDL, HelloAdminSDL, UserRoleSDL])
 
 const resolvers = [
   HelloAdminResolver as IResolvers,
+  UserRoleResolver as IResolvers,
   {
     JSON: GraphQLJSON,
   },
