@@ -8,6 +8,9 @@ const IndexSDL = gql`
 
   type Query {
     #
+    helloNonAuth: HelloNonAuth
+
+    #
     booksList: BookQuery
 
     #
