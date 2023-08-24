@@ -11,12 +11,19 @@ const IndexSDL = gql`
 
     #
     userRoleList(filter: UserRoleFilter!): UserRoleQuery
+
+    #
+    userList(filter: UserFilter!): UserQuery
   }
 
   type Mutation {
     #
     createUserRole(input: CreateUserRole!): UserRole
     updateUserRole(input: UpdateUserRole!): UserRole
+
+    #
+    createUser(input: CreateUser!): User
+    updateUser(input: UpdateUser!): User
   }
 
   #

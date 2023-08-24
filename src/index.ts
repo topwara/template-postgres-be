@@ -4,8 +4,9 @@ import * as bodyParser from "body-parser"
 
 // Import
 //  => GraphQL
-import handlerServerNonAuth from "@v1/graphql/handlerNonAuth"
-import handlerServerAdmin from "@v1/graphql/handlerAdmin"
+import handlerServerNonAuth from "@v1Graphql/handlerNonAuth"
+import handlerServerAdmin from "@v1Graphql/handlerAdmin"
+import handlerServerUser from "@v1Graphql/handlerUser"
 //  => Http
 import adminLoginHandler from "@v1Controllers/adminLogin"
 import userLoginHandler from "@v1Controllers/userLogin"
@@ -42,14 +43,17 @@ async function startServer() {
     // Declare route
     const serverAdmin = handlerServerAdmin
     const serverNonAuth = handlerServerNonAuth
+    const serverUser = handlerServerUser
 
     // Start server
     await serverAdmin.start()
     await serverNonAuth.start()
+    await serverUser.start()
 
     // Config path :
     serverNonAuth.applyMiddleware({ app, path: "/v1/graphqlNonAuth" })
     serverAdmin.applyMiddleware({ app, path: "/v1/graphqlAdmin" })
+    serverUser.applyMiddleware({ app, path: "/v1/graphqlUser" })
     // ==========  END  : GraphQL ==========
 
     // Response console.log with pretty
@@ -63,6 +67,7 @@ async function startServer() {
     |     # GraphQL
     |       -> 👮 http://localhost:3000/v1/graphqlAdmin
     |       -> 👤 http://localhost:3000/v1/graphqlNonAuth
+    |       -> 👥 http://localhost:3000/v1/graphqlUser
     |
     =========================================================
     `

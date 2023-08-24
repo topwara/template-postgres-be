@@ -12,7 +12,7 @@ datasource db {
 
 model User {
   userID          String @id
-  roleID          String @unique
+  roleID          String
   email           String
   passwordHash    String
   isActive        String
@@ -22,17 +22,14 @@ model User {
   updatedAt       String
   
   // Nested Relation
-  role           UserRole @relation(fields: [roleID], references: [roleID])
+  role           UserRole? @relation(name: "userRoleOfUser", fields: [roleID], references: [roleID])
 }
 
 model UserRole {
   roleID          String @id
   name            String
   desc            String
-  isActive        String @default("TRUE")
   createdAt       String
   updatedAt       String
-
-  // Nested Relation
-  user            User?
+  user            User[] @relation("userRoleOfUser")
 }

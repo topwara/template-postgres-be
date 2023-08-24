@@ -12,11 +12,11 @@
     - ✔ Update Information User Role
     - ✔ Delete User Role
   - User
-    - Query UserList
-    - Query UserID
-    - Create User
-    - Update Information User
-    - Delete User
+    - ✔ Query UserList
+    - ✔ Query UserID
+    - ✔ Create User
+    - ✔ Update Information User
+    - ✔ Delete User
   - Login
     - ✔ Login of User
     - ✔ Login of Admin

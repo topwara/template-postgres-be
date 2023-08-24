@@ -8,14 +8,16 @@ import { GraphQLJSON } from "graphql-scalars"
 import { authUserMiddlewareFunction } from "@middleware/handler"
 
 // SDL #########################################################
+import GlobalSDL from "@v1GraphqlUserSchema/typedefs/Global"
 import IndexSDL from "@v1GraphqlUserSchema/typedefs/Index"
 import HelloUserSDL from "@v1GraphqlUserSchema/typedefs/HelloUser"
+import UserRoleSDL from "@v1GraphqlAdminSchema/typedefs/UserRole"
 
 // RESOLVERS ###################################################
 import HelloUserResolver from "@v1GraphqlUserSchema/resolvers/HelloUser.resolver"
 
 // AUTH ########################################################
-const typedefs = mergeTypeDefs([IndexSDL, HelloUserSDL])
+const typedefs = mergeTypeDefs([GlobalSDL, IndexSDL, HelloUserSDL, UserRoleSDL])
 
 const resolvers = [
   HelloUserResolver as IResolvers,
