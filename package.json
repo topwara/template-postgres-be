@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
     "generate": "graphql-codegen --config codegenNonAuth.yml && graphql-codegen --config codegenAdmin.yml && graphql-codegen --config codegenUser.yml",
-    "migrateDev": "npx prisma migrate dev --preview-feature"
+    "migrateDev": "npx prisma migrate dev --preview-feature",
+    "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",

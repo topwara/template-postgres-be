@@ -66,8 +66,8 @@ async function startServer() {
     |       -> 📧 http://localhost:3000/v1/auth/user/login
     |     # GraphQL
     |       -> 👮 http://localhost:3000/v1/graphqlAdmin
+    |       -> 👷 http://localhost:3000/v1/graphqlUser
     |       -> 👤 http://localhost:3000/v1/graphqlNonAuth
-    |       -> 👥 http://localhost:3000/v1/graphqlUser
     |
     =========================================================
     `
