@@ -4,9 +4,9 @@ import * as bodyParser from "body-parser"
 
 // Import
 //  => GraphQL
-import handlerServerNonAuth from "@v1Graphql/handlerNonAuth"
-import handlerServerAdmin from "@v1Graphql/handlerAdmin"
-import handlerServerUser from "@v1Graphql/handlerUser"
+import serverNonAuth from "@v1Graphql/handlerNonAuth"
+import serverAdmin from "@v1Graphql/handlerAdmin"
+import serverUser from "@v1Graphql/handlerUser"
 //  => Http
 import adminLoginHandler from "@v1Controllers/adminLogin"
 import userLoginHandler from "@v1Controllers/userLogin"
@@ -40,14 +40,9 @@ async function startServer() {
     // ==========  END  : HTTP    ==========
 
     // ========== START : GraphQL ==========
-    // Declare route
-    const serverAdmin = handlerServerAdmin
-    const serverNonAuth = handlerServerNonAuth
-    const serverUser = handlerServerUser
-
     // Start server
-    await serverAdmin.start()
     await serverNonAuth.start()
+    await serverAdmin.start()
     await serverUser.start()
 
     // Config path :
@@ -61,10 +56,10 @@ async function startServer() {
     ============ Welcome to template-postgres-be ============
     |
     | 🚀 Server ready at
-    |     # HTTP Function
+    |     # HTTP Function.
     |       -> 📧 http://localhost:3000/v1/auth/admin/login
     |       -> 📧 http://localhost:3000/v1/auth/user/login
-    |     # GraphQL
+    |     # GraphQL.
     |       -> 👮 http://localhost:3000/v1/graphqlAdmin
     |       -> 👷 http://localhost:3000/v1/graphqlUser
     |       -> 👤 http://localhost:3000/v1/graphqlNonAuth

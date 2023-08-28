@@ -16,7 +16,7 @@ const rootQuery: IResolvers = {
           email: userToken.email,
         },
         include: {
-          role: {},
+          role: true,
         },
       })
 
