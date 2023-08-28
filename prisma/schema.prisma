@@ -31,5 +31,8 @@ model UserRole {
   desc            String
   createdAt       String
   updatedAt       String
+  isActive        String
+
+  // Nested Relation
   user            User[] @relation("userRoleOfUser")
 }
