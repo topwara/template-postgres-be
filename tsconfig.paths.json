@@ -7,8 +7,8 @@
         "__tests__/*"
       ],
       // =============================== [src]
-      "@configs/*": [
-        "src/configs/*"
+      "@config/*": [
+        "src/config/*"
       ],
       "@libs/*": [
         "src/libs/*"
@@ -19,7 +19,13 @@
       "@utils/*": [
         "src/utils/*"
       ],
+      "@prismaCall/*": [
+        "src/prisma/*"
+      ],
       // =============================== [src / v1]
+      "@v1/*": [
+        "src/v1/*"
+      ],
       "@v1Controllers/*": [
         "src/v1/controllers/*"
       ],
@@ -28,6 +34,12 @@
       ],
       "@v1GraphqlNonAuthSchema/*": [
         "src/v1/graphqlNonAuthSchema/*"
+      ],
+      "@v1GraphqlAdminSchema/*": [
+        "src/v1/graphqlAdminSchema/*"
+      ],
+      "@v1GraphqlUserSchema/*": [
+        "src/v1/graphqlUserSchema/*"
       ],
       "@v1Routes/*": [
         "src/v1/routes/*"
