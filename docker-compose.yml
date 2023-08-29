@@ -1,0 +1,36 @@
+services:
+  backend:
+    container_name: postgres-backend
+    image: node:18
+    volumes:
+      - .:/workdir
+    working_dir: /workdir
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    networks:
+      - test_vm
+    command: >
+      bash -c "
+        npm install &&
+        npm run dev
+      "
+  db:
+    container_name: postgres-database
+    image: postgres:15
+    volumes:
+      - .:/workdir
+    working_dir: /workdir
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_DB: tests
+    networks:
+      - test_vm
+networks:
+  test_vm:
+    name: test_vm
+    driver: bridge
