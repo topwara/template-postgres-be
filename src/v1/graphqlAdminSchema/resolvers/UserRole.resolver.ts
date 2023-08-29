@@ -29,6 +29,9 @@ const rootQuery: IResolvers = {
         where: {
           roleID: filter.roleID || undefined,
         },
+        include: {
+          user: true,
+        },
       })
 
       console.log("=====  END  : userRoleList : Success =====")

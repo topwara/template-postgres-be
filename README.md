@@ -1,17 +1,23 @@
 # Template Postgres Backend
 
-## Tools
+<br>
+  <div align="center"> 
+    <img img src="https://i.ibb.co/PMbfT8z/teamplate-postgres-be-cover.png" width="70%">
+  </div>
+<br>
 
-1. TypeScript
-2. Express
-3. GraphQL
-4. Prisma
-5. Postgresql
-6. Docker
+## About The Project
 
-<img src="https://res.cloudinary.com/practicaldev/image/fetch/s--Xn7rKgvt--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xc0cexf181iaha0ar7wr.jpg" width="90%"></img>
+### Built With
 
-## Folder Structure
+- TypeScript
+- Express JS
+- GraphQL
+- Prisma
+- Postgresql
+- Docker
+
+### Folder Structure
 
 - `__tests__`
   - `configs` : The configs folder is used to organize configuration files in **tests**.
@@ -24,20 +30,125 @@
   - `seeder` : The folder where the mock files are stored.
 - `src`
   - `configs` : The configs folder is used to organize configuration files.
-  - `controllers` : We will put the handlers of our routes.
-  - `graphql` : Everything related to routing GraphQL.
-  - `graphqlSchema`
-    - `resolvers` : Responsible for populating the data for a single field in your schema.
-    - `typedefs` : Schema to describe the shape of your available data.
-  - `libs`
-  - `middleware` : Middleware functions are functions that have access to the request object (req), the response object (res).
-  - `routes` : Everything related to routing.
+  - `middleware` : The folder where to stored HTTP Authentication access.
+  - `prisma` : The folder where to stored Prisma services.
+  - `utils` : HTTP and GraphQL response and other.
+  - `v1`
+    - `controllers` : We will put the handlers of our routes.
+    - `graphql` : Everything related to routing GraphQL.
+    - `graphqlAdminSchema`
+      - `resolvers` : Responsible for populating the data for a single field in your schema.
+      - `typedefs` : Schema to describe the shape of your available data.
+    - `graphqlNonAuthSchema`
+      - `resolvers` : Responsible for populating the data for a single field in your schema.
+      - `typedefs` : Schema to describe the shape of your available data.
+    - `graphqlSchema`
+      - `resolvers` : Responsible for populating the data for a single field in your schema.
+      - `typedefs` : Schema to describe the shape of your available data.
   - `utils`
-    - `dyanamoDb.ts` : Function for call database.
-    - `http.ts` : Function generate response to client.
-    - `interface.ts` : Contain interface in app.
     - `others.ts` : Reusable function. Must test all function.
+    - `userAuthentication` : User function.
     - `*.ts` : Specific function. Must test all function.
-- `.env` : Keep KEY_AWS and SECRET_KEY_AWS for deploy to aws.
-- `docker-compose.yml`
-- `serverless.ts`
+  - `index.ts` : 📌 Important file to start with nodemon.
+- `.env` : Keep secret key for use in Project.
+- `docker-compose.yml` : Important file to use 'Docker command' to create Container
+
+<br>
+
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Installation
+
+_Below is an example ( STEP-BY-STEP ) of how you can installing and setting up your Template._
+
+1. Clone the repo
+
+```sh
+  git clone https://github.com/____________.git
+```
+
+2. Open Folder - Project
+
+```sh
+  create file (.env) and copy all default value from (.env.example).
+  change
+   o ACCESS_TOKEN_SECRET=your_access_token_secret_here
+   o REFRESH_TOKEN_SECRET=your_refresh_token_secret_here
+
+```
+
+3. Open ubuntu command line and promp
+
+```sh
+  your_ubuntu_cli:~$ docker compose up
+```
+
+4. On Docker Desktop program
+
+```sh
+  You will see
+
+    📦 template-postgres-be    (Running 2/2)
+     |  🗃 postgres-backend     (Running)        3000:3000
+     |  🗃 postgres-database    (Running)        5432:5432
+
+  That mean everything is work perfectly
+```
+
+5. Open any programs can Connect to database like ~ `🐻DBeawer`
+
+```sh
+    🔧 Connection setting (follow .env)
+     |  Host: localhost
+     |  Post: 5432
+     |  Database: tests
+     |  Username: prisma
+     |  Password: prisma
+
+    And connect status should be (ℹ Connected)
+```
+
+5. Sudo docker bash into container below
+
+```sh
+  your_ubuntu_cli:~$ sudo docker exec -it postgres-backend bash
+
+```
+
+6. Update Database and Table , Check in ~ `🐻DBeawer`
+
+```sh
+  root@:/workdir# npm run migrateDev
+```
+
+7. Insert mock value into Database to Start
+
+```sh
+  root@:/workdir# npm run seed
+```
+
+8. Check an items insert into 2 Databse
+
+9. 🚀 Start develop
+
+<br>
+
+## Usage
+
+Now this _teamplate-postgres-be_ can only use in `localhost` , _Not supported Deploy to any services now._
+
+<br>
+
+## Contact
+
+If you have any question or suggestion , Please contact. - `iTop - at Datability`
+
+<br>
+
+## Acknowledgements
+
+- [template-aws-be](https://github.com/datability-th/template-aws-be) : By P'Nuk at Datability
+- [GraphQL Microservice Setup with Apollo Server, Codegen, Prisma, Typescript, and PostgreSQL](https://www.youtube.com/watch?v=K8k0fXnDAnA) : By Leo Roese
