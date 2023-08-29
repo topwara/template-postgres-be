@@ -10,14 +10,29 @@ datasource db {
   url      = env("DB_URL")
 }
 
-model Book {
-  id String @id
-  title String
-  author String
+model User {
+  userID          String @id
+  roleID          String
+  email           String
+  passwordHash    String
+  isActive        String
+  userRoleGlobal  String
+  name            String
+  createdAt       String
+  updatedAt       String
+  
+  // Nested Relation
+  role           UserRole? @relation(name: "userRoleOfUser", fields: [roleID], references: [roleID])
 }
 
-model User {
-  id String @id
-  name String
-  age Int
+model UserRole {
+  roleID          String @id
+  name            String
+  desc            String
+  createdAt       String
+  updatedAt       String
+  isActive        String
+
+  // Nested Relation
+  user            User[] @relation("userRoleOfUser")
 }
