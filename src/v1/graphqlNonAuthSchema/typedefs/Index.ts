@@ -11,9 +11,6 @@ const IndexSDL = gql`
     helloNonAuth: HelloNonAuth
 
     #
-    booksList: BookQuery
-
-    #
     userList: UserQuery
   }
 

@@ -12,7 +12,7 @@ export const UserSeed = [
   },
   {
     userID: "USR.002",
-    email: "usr001@hotmail.com",
+    email: "usr002@hotmail.com",
     isActive: "TRUE",
     userRoleGlobal: "USER",
     name: "Two song",

@@ -1,5 +1,6 @@
 // Lib
 import { IResolvers } from "@graphql-tools/utils"
+import { UserRole } from "@prisma/client"
 
 // Include in project
 import prisma from "@prismaCall/client"
@@ -10,10 +11,8 @@ import {
   MutationCreateUserRoleArgs,
   MutationUpdateUserRoleArgs,
   QueryUserRoleListArgs,
-  UserRole,
 } from "../generated"
 import { generateID } from "@v1/utils/other"
-import { Prisma } from "@prisma/client"
 
 // ================================================================
 
@@ -26,12 +25,8 @@ const rootQuery: IResolvers = {
     try {
       // Query
       const userRole = await prisma["userRole"].findMany({
-        where: {
-          roleID: filter.roleID || undefined,
-        },
-        include: {
-          user: true,
-        },
+        where: { roleID: filter.roleID || undefined },
+        include: { user: true },
       })
 
       console.log("=====  END  : userRoleList : Success =====")
@@ -51,7 +46,7 @@ const rootMutation: IResolvers = {
 
     try {
       // UserRole Items
-      const userRoleItems: UserRole = {
+      const userRoleItems: Partial<UserRole> = {
         ...input,
 
         // PK
@@ -63,7 +58,7 @@ const rootMutation: IResolvers = {
       }
 
       // Create UserRole
-      await prisma["userRole"].create({ data: userRoleItems as any })
+      await prisma["userRole"].create({ data: userRoleItems as UserRole })
 
       console.log("=====  END  : createUserRole : Success =====")
       return responseFormatGraphQL(EResponseStatus.SUCCESS, { roleID: userRoleItems.roleID })
@@ -79,28 +74,22 @@ const rootMutation: IResolvers = {
     try {
       // Get
       const userRole = await prisma["userRole"].findFirst({
-        where: {
-          roleID: input.roleID,
-        },
+        where: { roleID: input.roleID },
       })
 
       // Validate
       if (!userRole) return responseFormatGraphQL(EResponseStatus.WARNING, { error: "userRole is not Exist" })
 
       // UserRole Items
-      const userRoleItems: UserRole = {
+      const userRoleItems: Partial<UserRole> = {
         ...input,
         updatedAt: new Date().toISOString(),
       }
 
       // Update UserRole
       await prisma["userRole"].update({
-        where: {
-          roleID: input.roleID,
-        },
-        data: {
-          ...userRoleItems,
-        },
+        where: { roleID: input.roleID },
+        data: { ...userRoleItems },
       })
 
       console.log("=====  END  : updateUserRole : Success =====")

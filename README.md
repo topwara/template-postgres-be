@@ -19,12 +19,6 @@
 
 ### Folder Structure
 
-- `__tests__`
-  - `configs` : The configs folder is used to organize configuration files in **tests**.
-  - `integrations` : Test Flow User Acceptance Test(UAT).
-  - `queries` : Keep query schema for call gql
-  - `units` : Test Case Function in folder `src/utils/*.ts`. Ignore file `dyanamoDb.ts, http.ts, interface.ts`.
-  - `utils`
 - `prisma`
   - `migrations` : The folder where the database's change files are stored.
   - `seeder` : The folder where the mock files are stored.
@@ -74,9 +68,7 @@ _Below is an example ( STEP-BY-STEP ) of how you can installing and setting up y
 
 ```sh
   create file (.env) and copy all default value from (.env.example).
-  change
-   o ACCESS_TOKEN_SECRET=your_access_token_secret_here
-   o REFRESH_TOKEN_SECRET=your_refresh_token_secret_here
+  then change value
 
 ```
 
@@ -104,9 +96,9 @@ _Below is an example ( STEP-BY-STEP ) of how you can installing and setting up y
     🔧 Connection setting (follow .env)
      |  Host: localhost
      |  Post: 5432
-     |  Database: tests
-     |  Username: prisma
-     |  Password: prisma
+     |  Database: postgres
+     |  Username: postgres
+     |  Password: postgres
 
     And connect status should be (ℹ Connected)
 ```
@@ -121,13 +113,13 @@ _Below is an example ( STEP-BY-STEP ) of how you can installing and setting up y
 6. Update Database and Table , Check in ~ `🐻DBeawer`
 
 ```sh
-  root@:/workdir# npm run migrateDev
+  root@:/workdir# npm run prisma:all
 ```
 
 7. Insert mock value into Database to Start
 
 ```sh
-  root@:/workdir# npm run seed
+  root@:/workdir# npm run prisma:seed
 ```
 
 8. Check an items insert into 2 Databse
@@ -144,7 +136,7 @@ Now this _teamplate-postgres-be_ can only use in `localhost` , _Not supported De
 
 ## Contact
 
-If you have any question or suggestion , Please contact. - `iTop - at Datability`
+If you have any question or suggestion , Please contact.
 
 <br>
 

@@ -1,12 +1,13 @@
 // Lib
 import * as bcrypt from "bcryptjs"
 import { IResolvers } from "@graphql-tools/utils"
+import { User } from "@prisma/client"
 
 // Include in project
 import prisma from "@prismaCall/client"
 import { EResponseStatus, responseFormatGraphQL } from "@utils/http"
 import { E_User_Role_Global, I_Context } from "@utils/interface"
-import { E_Is_Active, MutationCreateUserArgs, MutationUpdateUserArgs, QueryUserListArgs, User } from "../generated"
+import { E_Is_Active, MutationCreateUserArgs, MutationUpdateUserArgs, QueryUserListArgs } from "../generated"
 import { generateID } from "@v1/utils/other"
 
 // ================================================================
@@ -20,12 +21,8 @@ const rootQuery: IResolvers = {
     try {
       // Query
       const userList = await prisma["user"].findMany({
-        where: {
-          userID: filter.userID || undefined,
-        },
-        include: {
-          role: {},
-        },
+        where: { userID: filter.userID || undefined },
+        include: { role: true },
       })
 
       console.log("=====  END  : userList : Success =====")
@@ -57,7 +54,7 @@ const rootMutation: IResolvers = {
       if (userGet) return responseFormatGraphQL(EResponseStatus.WARNING, { error: "user email is Exist" })
 
       // User Items
-      const userItems: User & { password: string; passwordHash: string } = {
+      const userItems: User & { password: string } = {
         ...input,
 
         // PK
@@ -72,7 +69,7 @@ const rootMutation: IResolvers = {
       delete userItems.password
 
       // Create User
-      await prisma["user"].create({ data: userItems as any })
+      await prisma["user"].create({ data: userItems })
 
       console.log("=====  END  : createUser : Success =====")
       return responseFormatGraphQL(EResponseStatus.SUCCESS, { userID: userItems.userID })
@@ -93,7 +90,7 @@ const rootMutation: IResolvers = {
       if (!userGet) return responseFormatGraphQL(EResponseStatus.WARNING, { error: "user is not Exist" })
 
       // User Items
-      const userItems: User = {
+      const userItems: Partial<User> = {
         ...input,
 
         updatedAt: new Date().toISOString(),
@@ -101,12 +98,8 @@ const rootMutation: IResolvers = {
 
       // Update User
       await prisma["user"].update({
-        where: {
-          userID: input.userID,
-        },
-        data: {
-          ...userItems,
-        },
+        where: { userID: input.userID },
+        data: { ...userItems },
       })
 
       console.log("=====  END  : updateUser : Success =====")

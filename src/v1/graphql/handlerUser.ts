@@ -1,5 +1,6 @@
 // Lib
-import { ApolloServer } from "apollo-server-express"
+import * as express from "express"
+import { ApolloServer, ExpressContext } from "apollo-server-express"
 import { IResolvers } from "@graphql-tools/utils"
 import { mergeTypeDefs } from "@graphql-tools/merge"
 import { GraphQLJSON } from "graphql-scalars"
@@ -26,10 +27,17 @@ const resolvers = [
   },
 ]
 
-const server = new ApolloServer({
+const server: ApolloServer<ExpressContext> = new ApolloServer({
   typeDefs: typedefs,
   resolvers: resolvers,
   context: authUserMiddlewareFunction,
 })
 
-export default server
+const app = express()
+const startServer = async () => {
+  await server.start()
+  server.applyMiddleware({ app, path: "/graphqlUser" })
+}
+startServer()
+
+export default app

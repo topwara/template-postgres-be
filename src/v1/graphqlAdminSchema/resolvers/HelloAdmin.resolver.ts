@@ -1,7 +1,13 @@
+// Lib
 import { IResolvers } from "@graphql-tools/utils"
+import { User, UserRole } from "@prisma/client"
+
+// Include in project
 import prisma from "@prismaCall/client"
 import { EResponseStatus, responseFormatGraphQL } from "@utils/http"
-import { I_Context, I_User } from "@utils/interface"
+import { I_Context } from "@utils/interface"
+
+// ================================================================
 
 // Query
 const rootQuery: IResolvers = {
@@ -11,13 +17,9 @@ const rootQuery: IResolvers = {
 
     try {
       // Query
-      const userRes: I_User & { role: Record<string, any> } = await prisma["user"].findFirst({
-        where: {
-          email: userToken.email,
-        },
-        include: {
-          role: true,
-        },
+      const userRes: User & { role: UserRole } = await prisma["user"].findFirst({
+        where: { email: userToken.email },
+        include: { role: true },
       })
 
       console.log("=====  END  : helloAdmin : Success =====")

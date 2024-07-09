@@ -16,6 +16,7 @@
     "baseUrl": ".",
   },
   "include": [
+    "/**/*.ts",
     "src/**/*.ts",
     "serverless.ts",
     "__tests__/**/*.test.ts"

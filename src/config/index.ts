@@ -12,8 +12,8 @@ export const REFRESH_TOKEN_LIFE = "2d"
 // Send Email
 export const SENDER_PROVIDER = "smtp.gmail.com"
 export const SENDER_PORT = 465
-export const SENDER_MAIL = "datability.test.mailer@gmail.com"
-export const SENDER_PASS = process.env.SENDER_PASS
+export const SENDER_MAIL = "_____@gmail.com"
+export const SENDER_PASS = ""
 
 // Name Preset
-export const APPLICATION_NAME = "TemplatePostgresBE"
+export const APPLICATION_NAME = "template-postgres-be"

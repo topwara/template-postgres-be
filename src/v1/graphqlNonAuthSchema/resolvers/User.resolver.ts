@@ -1,12 +1,11 @@
 // Lib
 import { IResolvers } from "@graphql-tools/utils"
 import { Prisma } from "@prisma/client"
-import { EResponseStatus, responseFormatGraphQL } from "@utils/http"
-import { MutationCreateUserArgs, User } from "@v1GraphqlNonAuthSchema/generated"
+import { MutationCreateUserArgs } from "@v1GraphqlNonAuthSchema/generated"
 
 // Include in project
-import { getAllUsers } from "src/data/userService"
 import prisma from "src/prisma/client"
+import { EResponseStatus, responseFormatGraphQL } from "@utils/http"
 
 // ===========================================================
 
@@ -37,13 +36,13 @@ const rootMutation: IResolvers = {
 
     try {
       //
-      const userItems: User & Prisma.UserCreateInput = {
+      const userItems = {
         id: Date.now().toString(),
         ...input,
       }
 
       //
-      const userParams: Prisma.UserCreateArgs = { data: userItems }
+      const userParams: Prisma.UserCreateArgs = { data: userItems as any }
 
       //
       await prisma.user.create(userParams)

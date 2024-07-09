@@ -1,7 +1,7 @@
 // Lib
 import { gql } from "apollo-server"
 
-// About HelloAdmin
+// About HelloNonAuth
 const HelloNonAuthSDL = gql`
   #
 

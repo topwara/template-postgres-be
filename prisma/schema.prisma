@@ -11,28 +11,28 @@ datasource db {
 }
 
 model User {
-  userID          String @id
-  roleID          String
-  email           String
-  passwordHash    String
-  isActive        String
-  userRoleGlobal  String
-  name            String
-  createdAt       String
-  updatedAt       String
-  
+  userID         String @id
+  roleID         String
+  email          String
+  passwordHash   String
+  isActive       String
+  userRoleGlobal String
+  name           String
+  createdAt      String
+  updatedAt      String
+
   // Nested Relation
-  role           UserRole? @relation(name: "userRoleOfUser", fields: [roleID], references: [roleID])
+  role UserRole? @relation(name: "userRoleOfUser", fields: [roleID], references: [roleID])
 }
 
 model UserRole {
-  roleID          String @id
-  name            String
-  desc            String
-  createdAt       String
-  updatedAt       String
-  isActive        String
+  roleID    String @id
+  name      String
+  desc      String
+  createdAt String
+  updatedAt String
+  isActive  String
 
   // Nested Relation
-  user            User[] @relation("userRoleOfUser")
+  user User[] @relation("userRoleOfUser")
 }
